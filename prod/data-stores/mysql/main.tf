@@ -12,7 +12,7 @@ terraform {
   }
 }
 module "mysql" {
-  source = "../../../modules/data-stores/mysql"
+  source = "github.com/mjmayer/terraform-up-and-running-modules//modules/data-stores/mysql?ref=v0.0.2"
 
   cluster_name = "mysql-prod"
 }
