@@ -3,12 +3,11 @@ provider "aws" {
 }
 
 terraform {
-  backend "s3" {
-    key            = "stage/data-stores/mysql/terraform.tfstate"
-    bucket         = "terraform-up-and-running-state-mjmayer"
-    region         = "us-west-2"
-    dynamodb_table = "terraform-up-and-running-locks"
-    encrypt        = true
+  backend "remote" {
+    organization = "ucdavis"
+    workspaces {
+      name = "terraform-up-and-running-data-stores-mysql-stage"
+    }
   }
 }
 
