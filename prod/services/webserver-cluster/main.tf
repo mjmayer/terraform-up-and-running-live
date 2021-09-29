@@ -11,7 +11,7 @@ terraform {
   }
 }
 module "webserver_cluster" {
-  source = "github.com/mjmayer/terraform-up-and-running-modules//modules/services/webserver-cluster?ref=v0.0.2"
+  source = "github.com/mjmayer/terraform-up-and-running-modules//modules/services/webserver-cluster?ref=v0.0.4"
 
   cluster_name           = "webservers-prod"
   db_remote_state_bucket = "terraform-up-and-running-state-mjmayer"
@@ -20,6 +20,11 @@ module "webserver_cluster" {
   instance_type = "m4.large"
   min_size      = 2
   max_size      = 10
+
+  custom_tags = {
+    Owner      = "team-foo"
+    DeployedBy = "terraform"
+  }
 }
 
 resource "aws_autoscaling_schedule" "scale_out_during_business_hours" {
