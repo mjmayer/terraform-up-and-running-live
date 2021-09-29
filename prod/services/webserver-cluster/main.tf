@@ -3,15 +3,13 @@ provider "aws" {
 }
 
 terraform {
-  backend "s3" {
-    key            = "prod/services/webserver-cluster/terraform.tfstate"
-    bucket         = "terraform-up-and-running-state-mjmayer"
-    region         = "us-west-2"
-    dynamodb_table = "terraform-up-and-running-locks"
-    encrypt        = true
+  backend "remote" {
+    organization = "ucdavis"
+    workspaces {
+      name = "terraform-up-and-running-services-webserver-cluster-prod"
+    }
   }
 }
-
 module "webserver_cluster" {
   source = "github.com/mjmayer/terraform-up-and-running-modules//modules/services/webserver-cluster?ref=v0.0.2"
 
