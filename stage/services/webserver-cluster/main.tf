@@ -18,17 +18,17 @@ terraform {
   }
 }
 module "webserver_cluster" {
-  source = "github.com/mjmayer/terraform-up-and-running-modules//modules/services/webserver-cluster?ref=v0.0.7"
+  source = "github.com/mjmayer/terraform-up-and-running-modules//modules/services/webserver-cluster?ref=v0.0.8"
 
   cluster_name           = "webservers-stage"
   db_remote_state_bucket = "terraform-up-and-running-state-mjmayer"
   db_remote_state_key    = "stage/data-stores/mysql/terraform.tfstate"
 
-  enable_autoscaling = false
-
   instance_type = "t3.micro"
   min_size      = 2
   max_size      = 2
+  enable_autoscaling = false
+  enable_new_user_data = true
 }
 
 resource "aws_security_group_rule" "allow_testing_inbound" {
