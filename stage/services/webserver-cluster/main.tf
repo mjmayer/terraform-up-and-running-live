@@ -24,6 +24,8 @@ module "webserver_cluster" {
   db_remote_state_bucket = "terraform-up-and-running-state-mjmayer"
   db_remote_state_key    = "stage/data-stores/mysql/terraform.tfstate"
 
+  enable_autoscaling = false
+
   instance_type = "t3.micro"
   min_size      = 2
   max_size      = 2
