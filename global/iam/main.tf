@@ -11,7 +11,12 @@ terraform {
   }
 }
 
+variable "user_names" {
+  description = "Create IAM users with these names"
+  type        = list(string)
+  default     = ["neo", "trinity", "morpheus"]
+}
 resource "aws_iam_user" "example" {
-  count = 3
-  name  = "neo.${count.index}"
+  count = length(var.user_names)
+  name  = var.user_names[count.index]
 }
