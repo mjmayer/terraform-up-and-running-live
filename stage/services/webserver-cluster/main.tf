@@ -18,7 +18,7 @@ terraform {
   }
 }
 module "webserver_cluster" {
-  source = "github.com/mjmayer/terraform-up-and-running-modules//modules/services/webserver-cluster?ref=v0.0.15"
+  source = "github.com/mjmayer/terraform-up-and-running-modules//modules/services/webserver-cluster?ref=v0.0.16"
 
   ami = "ami-09d9c897fc36713bf"
   server_text = "New server text"
