@@ -11,7 +11,7 @@ terraform {
   }
 }
 module "webserver_cluster" {
-  source = "github.com/mjmayer/terraform-up-and-running-modules//modules/services/webserver-cluster?ref=v0.0.15"
+  source = "github.com/mjmayer/terraform-up-and-running-modules//modules/services/webserver-cluster?ref=v0.0.16"
 
   cluster_name           = "webservers-prod"
   db_remote_state_bucket = "terraform-up-and-running-state-mjmayer"
@@ -21,6 +21,8 @@ module "webserver_cluster" {
   min_size      = 2
   max_size      = 10
   enable_autoscaling = true
+
+  server_text = "This is production"
 
   custom_tags = {
     Owner      = "team-foo"
