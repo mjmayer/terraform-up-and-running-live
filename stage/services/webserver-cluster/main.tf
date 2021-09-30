@@ -18,7 +18,10 @@ terraform {
   }
 }
 module "webserver_cluster" {
-  source = "github.com/mjmayer/terraform-up-and-running-modules//modules/services/webserver-cluster?ref=v0.0.14"
+  source = "github.com/mjmayer/terraform-up-and-running-modules//modules/services/webserver-cluster?ref=v0.0.15"
+
+  ami = "ami-09d9c897fc36713bf"
+  server_text = "New server text"
 
   cluster_name           = "webservers-stage"
   db_remote_state_bucket = "terraform-up-and-running-state-mjmayer"
@@ -28,7 +31,6 @@ module "webserver_cluster" {
   min_size      = 2
   max_size      = 2
   enable_autoscaling = false
-  enable_new_user_data = true
 }
 
 resource "aws_security_group_rule" "allow_testing_inbound" {
