@@ -20,7 +20,7 @@ terraform {
 module "webserver_cluster" {
   source = "github.com/mjmayer/terraform-up-and-running-modules//modules/services/webserver-cluster?ref=v0.0.17"
 
-  ami = "ami-09d9c897fc36713bf"
+  ami = "ami-090717c950a5c34d3"
   server_text = "New server text"
 
   cluster_name           = "webservers-stage"
