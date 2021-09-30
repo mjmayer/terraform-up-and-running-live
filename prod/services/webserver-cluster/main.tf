@@ -22,7 +22,7 @@ module "webserver_cluster" {
   max_size      = 10
   enable_autoscaling = true
 
-  server_text = "This is production"
+  server_text = "This is production!"
 
   custom_tags = {
     Owner      = "team-foo"
