@@ -11,7 +11,7 @@ terraform {
   }
 }
 module "webserver_cluster" {
-  source = "github.com/mjmayer/terraform-up-and-running-modules//modules/services/webserver-cluster?ref=v0.0.16"
+  source = "github.com/mjmayer/terraform-up-and-running-modules//modules/services/webserver-cluster?ref=v0.0.17"
 
   cluster_name           = "webservers-prod"
   db_remote_state_bucket = "terraform-up-and-running-state-mjmayer"
